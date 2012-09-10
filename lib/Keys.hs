@@ -9,9 +9,9 @@ module Keys where
            , ("<XF86AudioMute>", spawn "amixer -q set PCM toggle")
            , ("<XF86AudioRaiseVolume>", spawn "amixer -q set PCM 5+")
            , ("<XF86AudioLowerVolume>", spawn "amixer -q set PCM 5-")
-           , ("M-i", spawn "notedpp -l | dmenu -l 10")
-           , ("M-o", spawn "noted_helper -n")
-           , ("M-p", spawn "noted_helper -d")
+           , ("M-u", spawn "notedpp -l | dmenu -l 10")
+           , ("M-i", spawn "noted_helper -n")
+           , ("M-o", spawn "noted_helper -d")
            , ("M-S-l", spawn "xscreensaver-command -lock && xset dpms force off") -- lock workstation and turn off display
            , ("M-x", runOrRaisePrompt defaultXPConfig) -- Run or Raise
            , ("<XF86AudioNext>", spawn "ncmpcpp next")
