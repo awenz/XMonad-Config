@@ -8,18 +8,19 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers (isDialog, isFullscreen, doFullFloat)
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Actions.UpdatePointer
+import XMonad.Actions.Submap
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Util.EZConfig(additionalKeysP, additionalKeys)
 import XMonad.Util.CustomKeys
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise
 import System.IO
-import Keys(myKeys)
+import Keys(myKeys, mySubmap)
 
 myNormalBorderColor     = "#dddddd"
 myFocusedBorderColor    = "#ffffff"
@@ -34,6 +35,7 @@ myManageHook = composeAll
     , className =? "Inkscape"       --> doShift "6"
     , className =? "Blender"        --> doShift "6"
     , className =? "xpdf"           --> doShift "8"
+    , className =? "nautilus"       --> doFloat
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)
     ] <+> manageHook defaultConfig
 
@@ -76,4 +78,4 @@ main = do
             logHook             = myLogHook d,
             layoutHook          = myLayoutHook,
             startupHook         = setWMName "LG3D"
-        } `additionalKeysP` myKeys
+        } `additionalKeysP` myKeys `additionalKeys` mySubmap
