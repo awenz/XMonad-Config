@@ -1,0 +1,12 @@
+import XMonad
+import XMonad.Config.Xfce
+import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.DynamicLog
+
+
+
+
+main = xmonad xfceConfig
+            { modMask = mod4Mask }
+
