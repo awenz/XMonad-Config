@@ -7,16 +7,17 @@ module Keys where
   import qualified Data.Map as M
 
   myKeys :: [(String, X())]  
-  myKeys = [ ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"") -- dmenu
-           , ("<XF86AudioMute>", spawn "amixer -q set PCM toggle")
-           , ("<XF86AudioRaiseVolume>", spawn "amixer -q set PCM 5+")
-           , ("<XF86AudioLowerVolume>", spawn "amixer -q set PCM 5-")
-           , ("M-S-l", spawn "xscreensaver-command -lock && xset dpms force off") -- lock workstation and turn off display
+  myKeys = [ ("M-p", spawn "x=$(yeganesh -x -- -i -fn Verdana-12) && exec $x") -- dmenu
+           , ("<XF86AudioMute>", spawn "amixer -c 0 -q set Master toggle")
+           , ("<XF86AudioRaiseVolume>", spawn "amixer -c 0 -q set Master 5+")
+           , ("<XF86AudioLowerVolume>", spawn "amixer -c 0 -q set Master 5-")
+           , ("M-S-l", spawn "slock && xset dpms force off") -- lock workstation and turn off display
            , ("M-x", runOrRaisePrompt defaultXPConfig) -- Run or Raise
            , ("<XF86AudioNext>", spawn "ncmpcpp next")
            , ("<XF86AudioPrev>", spawn "ncmpcpp prev")
            , ("<XF86AudioPlay>", spawn "ncmpcpp toggle")
            , ("<XF86AudioStop>", spawn "ncmpcpp stop")
+           , ("M-S-p", spawn "synapse") 
            ]
 
   mySubmap :: [((ButtonMask, KeySym), X ())]
